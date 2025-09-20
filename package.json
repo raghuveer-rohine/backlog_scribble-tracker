@@ -1,0 +1,57 @@
+{
+  "name": "backlog-tracker",
+  "version": "1.0.0",
+  "description": "A simple and beautiful backlog tracker for macOS",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build-mac": "electron-builder --mac",
+    "dist": "electron-builder --publish=never"
+  },
+  "keywords": ["backlog", "tasks", "productivity", "macos"],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "latest",
+    "electron-builder": "latest"
+  },
+  "build": {
+    "appId": "com.raghuveerrohine.backlog-tracker",
+    "productName": "Backlog Tracker",
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["x64", "arm64"]
+        }
+      ],
+      "icon": "assets/icon.icns"
+    },
+    "dmg": {
+      "title": "Backlog Tracker",
+      "background": "assets/dmg-background.png",
+      "window": {
+        "width": 540,
+        "height": 380
+      },
+      "contents": [
+        {
+          "x": 140,
+          "y": 200,
+          "type": "file"
+        },
+        {
+          "x": 400,
+          "y": 200,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    }
+  }
+}
