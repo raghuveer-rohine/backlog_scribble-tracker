@@ -6,6 +6,8 @@ const os = require('os');
 const dataDir = path.join(os.homedir(), 'Library', 'Application Support', 'BacklogTracker');
 const dataPath = path.join(dataDir, 'tasks.json');
 const scribblePath = path.join(dataDir, 'scribble.txt');
+const promptsPath = path.join(dataDir, 'prompts.json');
+const ollamaConfigPath = path.join(dataDir, 'ollama-config.json');
 
 
 async function createWindow() {
@@ -135,5 +137,47 @@ ipcMain.handle('load-scribble', async () => {
     return { success: true, data };
   } catch (error) {
     return { success: true, data: '' }; // empty file initially
+  }
+});
+
+ipcMain.handle('save-prompts', async (event, prompts) => {
+  try {
+    await ensureDataDir();
+    await fs.writeFile(promptsPath, JSON.stringify(prompts, null, 2));
+    return { success: true };
+  } catch (error) {
+    console.error('Failed to save prompts:', error);
+    return { success: false, error: error.message };
+  }
+});
+
+ipcMain.handle('load-prompts', async () => {
+  try {
+    await ensureDataDir();
+    const data = await fs.readFile(promptsPath, 'utf8');
+    return { success: true, data: JSON.parse(data) };
+  } catch (error) {
+    return { success: true, data: [] }; // empty array initially
+  }
+});
+
+ipcMain.handle('save-ollama-config', async (event, config) => {
+  try {
+    await ensureDataDir();
+    await fs.writeFile(ollamaConfigPath, JSON.stringify(config, null, 2));
+    return { success: true };
+  } catch (error) {
+    console.error('Failed to save Ollama config:', error);
+    return { success: false, error: error.message };
+  }
+});
+
+ipcMain.handle('load-ollama-config', async () => {
+  try {
+    await ensureDataDir();
+    const data = await fs.readFile(ollamaConfigPath, 'utf8');
+    return { success: true, data: JSON.parse(data) };
+  } catch (error) {
+    return { success: true, data: null }; // null if no config
   }
 });

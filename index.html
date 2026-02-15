@@ -302,7 +302,453 @@
     overflow-y: auto;
 }
 
+/* AI Section Styles */
+.ai-container {
+    padding: 20px 30px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
 
+.ai-config-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
+    border-left: 4px solid #667eea;
+}
+
+.config-btn {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.config-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.config-status {
+    font-size: 13px;
+    color: #666;
+    font-weight: 500;
+}
+
+.config-status.success {
+    color: #4CAF50;
+}
+
+.config-status.error {
+    color: #ff4757;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+}
+
+.modal.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.close-modal {
+    font-size: 32px;
+    font-weight: 300;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    line-height: 1;
+}
+
+.close-modal:hover {
+    color: #333;
+}
+
+.modal-body {
+    padding: 25px;
+}
+
+.config-section {
+    margin-bottom: 20px;
+}
+
+.config-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+.config-input,
+.model-select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid rgba(102, 126, 234, 0.2);
+    border-radius: 10px;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+}
+
+.config-input:focus,
+.model-select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.test-btn {
+    padding: 10px 20px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.test-btn:hover {
+    background: #5568d3;
+}
+
+.test-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.connection-status {
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 13px;
+    min-height: 20px;
+}
+
+.connection-status.success {
+    background: rgba(76, 175, 80, 0.1);
+    color: #4CAF50;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.connection-status.error {
+    background: rgba(255, 71, 87, 0.1);
+    color: #ff4757;
+    border: 1px solid rgba(255, 71, 87, 0.3);
+}
+
+.connection-status.info {
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    border: 1px solid rgba(102, 126, 234, 0.3);
+}
+
+.modal-footer {
+    padding: 20px 25px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.save-config-btn {
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.save-config-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.save-config-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.ai-subsection {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
+    border-left: 4px solid #667eea;
+}
+
+.ai-subsection h3 {
+    color: #667eea;
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.prompt-input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.prompt-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid rgba(102, 126, 234, 0.2);
+    border-radius: 12px;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+}
+
+.prompt-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.save-prompt-btn {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.save-prompt-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.prompts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.prompt-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.prompt-item:hover {
+    background: rgba(255, 255, 255, 1);
+    border-color: #667eea;
+    transform: translateX(5px);
+}
+
+.prompt-item.selected {
+    background: rgba(102, 126, 234, 0.1);
+    border-color: #667eea;
+}
+
+.prompt-text {
+    flex: 1;
+    font-size: 14px;
+    color: #333;
+}
+
+.delete-prompt-btn {
+    background: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 11px;
+    transition: all 0.3s ease;
+}
+
+.delete-prompt-btn:hover {
+    background: #ff3742;
+    transform: scale(1.1);
+}
+
+.user-input {
+    width: 100%;
+    min-height: 120px;
+    padding: 12px 16px;
+    border: 2px solid rgba(102, 126, 234, 0.2);
+    border-radius: 12px;
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+    resize: vertical;
+    margin-bottom: 15px;
+}
+
+.user-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.generate-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.generate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.generate-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.ai-response {
+    min-height: 150px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(102, 126, 234, 0.2);
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 15px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.copy-btn {
+    width: 100%;
+    padding: 12px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+}
+
+.copy-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.ai-container::-webkit-scrollbar,
+.prompts-list::-webkit-scrollbar,
+.ai-response::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ai-container::-webkit-scrollbar-track,
+.prompts-list::-webkit-scrollbar-track,
+.ai-response::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+}
+
+.ai-container::-webkit-scrollbar-thumb,
+.prompts-list::-webkit-scrollbar-thumb,
+.ai-response::-webkit-scrollbar-thumb {
+    background: rgba(102, 126, 234, 0.3);
+    border-radius: 3px;
+}
+
+.ai-container::-webkit-scrollbar-thumb:hover,
+.prompts-list::-webkit-scrollbar-thumb:hover,
+.ai-response::-webkit-scrollbar-thumb:hover {
+    background: rgba(102, 126, 234, 0.5);
+}
 
 
     </style>
@@ -313,6 +759,7 @@
     <div class="tabs">
         <button id="tasksTab" class="tab active">📝 Tasks</button>
         <button id="scribbleTab" class="tab">✍️ Scribble</button>
+        <button id="aiTab" class="tab">🤖 AI</button>
     </div>
 
     <!-- Tasks Section -->
@@ -339,6 +786,70 @@
     <!-- Scribble Section -->
     <div id="scribbleSection" class="section">
         <textarea id="scribbleArea" placeholder="Start scribbling your thoughts..."></textarea>
+    </div>
+
+    <!-- AI Section -->
+    <div id="aiSection" class="section">
+        <div class="ai-container">
+            <div class="ai-config-header">
+                <button id="configBtn" class="config-btn">⚙️ Configure Ollama</button>
+                <div id="configStatus" class="config-status"></div>
+            </div>
+            
+            <div class="ai-subsection">
+                <h3>📝 Saved Prompts</h3>
+                <div class="prompt-input-container">
+                    <input type="text" id="promptInput" class="prompt-input" placeholder="Enter a prompt template (e.g., 'Reformat the given text with proper english')">
+                    <button id="savePromptBtn" class="save-prompt-btn">Save</button>
+                </div>
+                <div id="promptsList" class="prompts-list"></div>
+            </div>
+            
+            <div class="ai-subsection">
+                <h3>💭 User Input</h3>
+                <textarea id="userInput" class="user-input" placeholder="Enter your text here (e.g., 'The candidate can be selected, but nead to upskil on microseruics, aws and javvv fundamentaal')"></textarea>
+                <button id="generateBtn" class="generate-btn">Generate Response</button>
+            </div>
+            
+            <div class="ai-subsection">
+                <h3>✨ AI Response</h3>
+                <div id="aiResponse" class="ai-response">Response will appear here...</div>
+                <button id="copyResponseBtn" class="copy-btn">📋 Copy Response</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Configuration Modal -->
+    <div id="configModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>⚙️ Ollama Configuration</h2>
+                <span class="close-modal" id="closeModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="config-section">
+                    <label>Ollama Hostname:</label>
+                    <input type="text" id="ollamaHost" class="config-input" placeholder="localhost" value="localhost">
+                </div>
+                <div class="config-section">
+                    <label>Ollama Port:</label>
+                    <input type="text" id="ollamaPort" class="config-input" placeholder="11434" value="11434">
+                </div>
+                <div class="config-section">
+                    <button id="testConnectionBtn" class="test-btn">Test Connection</button>
+                    <div id="connectionStatus" class="connection-status"></div>
+                </div>
+                <div class="config-section" id="modelSection" style="display: none;">
+                    <label>Select Model:</label>
+                    <select id="modelSelect" class="model-select">
+                        <option value="">-- Select a model --</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="saveConfigBtn" class="save-config-btn" disabled>Save Configuration</button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -535,22 +1046,37 @@
         // Tabs toggle
 const tasksTab = document.getElementById('tasksTab');
 const scribbleTab = document.getElementById('scribbleTab');
+const aiTab = document.getElementById('aiTab');
 const tasksSection = document.getElementById('tasksSection');
 const scribbleSection = document.getElementById('scribbleSection');
+const aiSection = document.getElementById('aiSection');
 const scribbleArea = document.getElementById('scribbleArea');
 
 tasksTab.addEventListener('click', () => {
   tasksTab.classList.add('active');
   scribbleTab.classList.remove('active');
+  aiTab.classList.remove('active');
   tasksSection.classList.add('active');
   scribbleSection.classList.remove('active');
+  aiSection.classList.remove('active');
 });
 
 scribbleTab.addEventListener('click', () => {
   scribbleTab.classList.add('active');
   tasksTab.classList.remove('active');
+  aiTab.classList.remove('active');
   scribbleSection.classList.add('active');
   tasksSection.classList.remove('active');
+  aiSection.classList.remove('active');
+});
+
+aiTab.addEventListener('click', () => {
+  aiTab.classList.add('active');
+  tasksTab.classList.remove('active');
+  scribbleTab.classList.remove('active');
+  aiSection.classList.add('active');
+  tasksSection.classList.remove('active');
+  scribbleSection.classList.remove('active');
 });
 
 // Scribble autosave
@@ -574,6 +1100,377 @@ async function loadScribble() {
   }
 }
 loadScribble();
+
+
+// AI Section functionality
+class AIAssistant {
+  constructor() {
+    this.prompts = [];
+    this.selectedPrompt = null;
+    this.promptInput = document.getElementById('promptInput');
+    this.savePromptBtn = document.getElementById('savePromptBtn');
+    this.promptsList = document.getElementById('promptsList');
+    this.userInput = document.getElementById('userInput');
+    this.generateBtn = document.getElementById('generateBtn');
+    this.aiResponse = document.getElementById('aiResponse');
+    this.copyResponseBtn = document.getElementById('copyResponseBtn');
+    
+    this.init();
+  }
+
+  async init() {
+    await this.loadPrompts();
+    this.savePromptBtn.addEventListener('click', () => this.savePrompt());
+    this.promptInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') this.savePrompt();
+    });
+    this.generateBtn.addEventListener('click', () => this.generateResponse());
+    this.copyResponseBtn.addEventListener('click', () => this.copyResponse());
+    this.renderPrompts();
+  }
+
+  async savePrompt() {
+    const text = this.promptInput.value.trim();
+    if (!text) return;
+
+    const prompt = {
+      id: Date.now().toString(),
+      text: text,
+      createdAt: new Date().toISOString()
+    };
+
+    this.prompts.unshift(prompt);
+    await this.savePromptsToFile();
+    this.promptInput.value = '';
+    this.renderPrompts();
+  }
+
+  async deletePrompt(id) {
+    this.prompts = this.prompts.filter(p => p.id !== id);
+    if (this.selectedPrompt && this.selectedPrompt.id === id) {
+      this.selectedPrompt = null;
+    }
+    await this.savePromptsToFile();
+    this.renderPrompts();
+  }
+
+  selectPrompt(id) {
+    this.selectedPrompt = this.prompts.find(p => p.id === id);
+    this.renderPrompts();
+  }
+
+  renderPrompts() {
+    if (this.prompts.length === 0) {
+      this.promptsList.innerHTML = '<div style="padding: 20px; text-align: center; color: #888;">No saved prompts yet. Add your first prompt above!</div>';
+      return;
+    }
+
+    let html = '';
+    this.prompts.forEach(prompt => {
+      const isSelected = this.selectedPrompt && this.selectedPrompt.id === prompt.id;
+      html += `
+        <div class="prompt-item ${isSelected ? 'selected' : ''}" onclick="aiAssistant.selectPrompt('${prompt.id}')">
+          <div class="prompt-text">${prompt.text}</div>
+          <button class="delete-prompt-btn" onclick="event.stopPropagation(); aiAssistant.deletePrompt('${prompt.id}')">✕</button>
+        </div>
+      `;
+    });
+    this.promptsList.innerHTML = html;
+  }
+
+  async generateResponse() {
+    if (!this.selectedPrompt) {
+      alert('Please select a prompt first!');
+      return;
+    }
+
+    const userText = this.userInput.value.trim();
+    if (!userText) {
+      alert('Please enter some text to process!');
+      return;
+    }
+
+    this.generateBtn.disabled = true;
+    this.generateBtn.textContent = 'Generating...';
+    this.aiResponse.textContent = 'Processing your request...';
+
+    try {
+      // Get config from configManager
+      const config = await configManager.getConfig();
+      if (!config.host || !config.port || !config.model) {
+        throw new Error('Ollama not configured. Please click "Configure Ollama" button.');
+      }
+
+      // Call Ollama API
+      const fullPrompt = `${this.selectedPrompt.text}\n\nInput: ${userText}`;
+      const ollamaUrl = `http://${config.host}:${config.port}/api/generate`;
+      
+      const response = await fetch(ollamaUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          model: config.model,
+          prompt: fullPrompt,
+          stream: false
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Ollama API error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      this.aiResponse.textContent = data.response || 'No response received';
+      this.copyResponseBtn.disabled = false;
+    } catch (error) {
+      console.error('Error calling Ollama:', error);
+      this.aiResponse.textContent = `Error: ${error.message}\n\nMake sure Ollama is running and properly configured.\nClick "Configure Ollama" button to set up.`;
+      this.copyResponseBtn.disabled = true;
+    } finally {
+      this.generateBtn.disabled = false;
+      this.generateBtn.textContent = 'Generate Response';
+    }
+  }
+
+  async copyResponse() {
+    const text = this.aiResponse.textContent;
+    if (text === 'Response will appear here...') return;
+
+    try {
+      await navigator.clipboard.writeText(text);
+      const originalText = this.copyResponseBtn.textContent;
+      this.copyResponseBtn.textContent = '✓ Copied!';
+      setTimeout(() => {
+        this.copyResponseBtn.textContent = originalText;
+      }, 2000);
+    } catch (error) {
+      console.error('Failed to copy:', error);
+      alert('Failed to copy to clipboard');
+    }
+  }
+
+  async savePromptsToFile() {
+    try {
+      if (window.electronAPI) {
+        await window.electronAPI.savePrompts(this.prompts);
+      } else {
+        window.promptsData = JSON.stringify(this.prompts);
+      }
+    } catch (error) {
+      console.error('Failed to save prompts:', error);
+    }
+  }
+
+  async loadPrompts() {
+    try {
+      if (window.electronAPI) {
+        const result = await window.electronAPI.loadPrompts();
+        this.prompts = result.success ? result.data : [];
+      } else {
+        const data = window.promptsData || '[]';
+        this.prompts = JSON.parse(data);
+      }
+    } catch (error) {
+      console.error('Failed to load prompts:', error);
+      this.prompts = [];
+    }
+  }
+}
+
+// Initialize AI Assistant
+const aiAssistant = new AIAssistant();
+
+
+// Configuration Manager
+class ConfigManager {
+  constructor() {
+    this.config = {
+      host: 'localhost',
+      port: '11434',
+      model: ''
+    };
+    this.modal = document.getElementById('configModal');
+    this.configBtn = document.getElementById('configBtn');
+    this.closeModal = document.getElementById('closeModal');
+    this.testConnectionBtn = document.getElementById('testConnectionBtn');
+    this.saveConfigBtn = document.getElementById('saveConfigBtn');
+    this.ollamaHost = document.getElementById('ollamaHost');
+    this.ollamaPort = document.getElementById('ollamaPort');
+    this.modelSelect = document.getElementById('modelSelect');
+    this.connectionStatus = document.getElementById('connectionStatus');
+    this.modelSection = document.getElementById('modelSection');
+    this.configStatus = document.getElementById('configStatus');
+    
+    this.init();
+  }
+
+  async init() {
+    await this.loadConfig();
+    await this.updateStatus();
+    
+    this.configBtn.addEventListener('click', () => this.openModal());
+    this.closeModal.addEventListener('click', () => this.closeModalFn());
+    this.testConnectionBtn.addEventListener('click', () => this.testConnection());
+    this.saveConfigBtn.addEventListener('click', () => this.saveConfig());
+    
+    // Close modal on outside click
+    window.addEventListener('click', (e) => {
+      if (e.target === this.modal) {
+        this.closeModalFn();
+      }
+    });
+  }
+
+  openModal() {
+    this.ollamaHost.value = this.config.host;
+    this.ollamaPort.value = this.config.port;
+    this.modal.classList.add('show');
+    this.connectionStatus.textContent = '';
+    this.connectionStatus.className = 'connection-status';
+    this.modelSection.style.display = 'none';
+    this.saveConfigBtn.disabled = true;
+  }
+
+  closeModalFn() {
+    this.modal.classList.remove('show');
+  }
+
+  async testConnection() {
+    const host = this.ollamaHost.value.trim() || 'localhost';
+    const port = this.ollamaPort.value.trim() || '11434';
+    
+    this.testConnectionBtn.disabled = true;
+    this.testConnectionBtn.textContent = 'Testing...';
+    this.connectionStatus.textContent = 'Checking Ollama connection...';
+    this.connectionStatus.className = 'connection-status info';
+    
+    try {
+      const response = await fetch(`http://${host}:${port}/api/tags`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+      });
+      
+      if (!response.ok) {
+        throw new Error('Ollama not responding');
+      }
+      
+      const data = await response.json();
+      
+      if (!data.models || data.models.length === 0) {
+        this.connectionStatus.textContent = '⚠️ Ollama is running but no models are installed. Please install a model using: ollama pull llama3.2:latest';
+        this.connectionStatus.className = 'connection-status error';
+        this.modelSection.style.display = 'none';
+        this.saveConfigBtn.disabled = true;
+      } else {
+        // Populate model dropdown
+        this.modelSelect.innerHTML = '<option value="">-- Select a model --</option>';
+        data.models.forEach(model => {
+          const option = document.createElement('option');
+          option.value = model.name;
+          option.textContent = `${model.name} (${this.formatSize(model.size)})`;
+          if (model.name === this.config.model) {
+            option.selected = true;
+          }
+          this.modelSelect.appendChild(option);
+        });
+        
+        this.connectionStatus.textContent = `✓ Connected! Found ${data.models.length} model(s). Please select a model below.`;
+        this.connectionStatus.className = 'connection-status success';
+        this.modelSection.style.display = 'block';
+        
+        // Enable save when model is selected
+        this.modelSelect.addEventListener('change', () => {
+          this.saveConfigBtn.disabled = !this.modelSelect.value;
+        });
+        
+        if (this.modelSelect.value) {
+          this.saveConfigBtn.disabled = false;
+        }
+      }
+    } catch (error) {
+      this.connectionStatus.textContent = `❌ Ollama is not configured or not running. Please make sure Ollama is installed and running on ${host}:${port}`;
+      this.connectionStatus.className = 'connection-status error';
+      this.modelSection.style.display = 'none';
+      this.saveConfigBtn.disabled = true;
+    } finally {
+      this.testConnectionBtn.disabled = false;
+      this.testConnectionBtn.textContent = 'Test Connection';
+    }
+  }
+
+  formatSize(bytes) {
+    if (bytes < 1024 * 1024 * 1024) {
+      return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+    }
+    return (bytes / (1024 * 1024 * 1024)).toFixed(1) + ' GB';
+  }
+
+  async saveConfig() {
+    const selectedModel = this.modelSelect.value;
+    if (!selectedModel) {
+      alert('Please select a model');
+      return;
+    }
+    
+    this.config = {
+      host: this.ollamaHost.value.trim() || 'localhost',
+      port: this.ollamaPort.value.trim() || '11434',
+      model: selectedModel
+    };
+    
+    try {
+      if (window.electronAPI) {
+        await window.electronAPI.saveOllamaConfig(this.config);
+      } else {
+        localStorage.setItem('ollamaConfig', JSON.stringify(this.config));
+      }
+      
+      await this.updateStatus();
+      this.closeModalFn();
+      alert('Configuration saved successfully!');
+    } catch (error) {
+      console.error('Failed to save config:', error);
+      alert('Failed to save configuration');
+    }
+  }
+
+  async loadConfig() {
+    try {
+      if (window.electronAPI) {
+        const result = await window.electronAPI.loadOllamaConfig();
+        if (result.success && result.data) {
+          this.config = result.data;
+        }
+      } else {
+        const saved = localStorage.getItem('ollamaConfig');
+        if (saved) {
+          this.config = JSON.parse(saved);
+        }
+      }
+    } catch (error) {
+      console.error('Failed to load config:', error);
+    }
+  }
+
+  async getConfig() {
+    return this.config;
+  }
+
+  async updateStatus() {
+    if (this.config.model) {
+      this.configStatus.textContent = `✓ Connected: ${this.config.model} @ ${this.config.host}:${this.config.port}`;
+      this.configStatus.className = 'config-status success';
+    } else {
+      this.configStatus.textContent = '⚠️ Not configured';
+      this.configStatus.className = 'config-status error';
+    }
+  }
+}
+
+// Initialize Configuration Manager
+const configManager = new ConfigManager();
 
 
     </script>

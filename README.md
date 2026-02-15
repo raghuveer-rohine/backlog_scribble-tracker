@@ -1,7 +1,29 @@
 # backlog_scribble-tracker
-A minimal macOS Backlog Tracker + Scribbler app - add tasks, jot quick notes, auto-save everything locally, and launch instantly with Option+B.
+A minimal macOS Backlog Tracker + Scribbler + AI Assistant app - add tasks, jot quick notes, get AI-powered text assistance with local Ollama, auto-save everything locally, and launch instantly with Option+B.
 
-# Backlog Tracker - Native macOS App Setup
+# Backlog Tracker - Native macOS App with AI Integration
+
+## Features
+
+✅ **Task Management**: Create, complete, and organize your backlog items by date
+
+✅ **Scribble Pad**: Quick note-taking area for thoughts and ideas
+
+✅ **AI Assistant (NEW)**: Local AI-powered text processing using Ollama
+   - Save custom prompt templates
+   - Process text with your selected AI model
+   - All processing happens locally - no cloud API needed
+   - Copy AI responses with one click
+
+✅ **Persistent Data Storage**: Everything saved to `~/Library/Application Support/BacklogTracker/`
+
+✅ **Native macOS Feel**: System fonts, native window styling, and macOS design patterns
+
+✅ **Automatic Date Grouping**: Tasks organized by creation date
+
+✅ **Global Shortcut**: Launch with Option+B from anywhere
+
+✅ **Lightweight**: Native performance with minimal footprint
 
 ## Quick Setup (5 minutes)
 
@@ -50,9 +72,77 @@ npm run build-mac
 
 The .dmg file will be created in the `dist/` folder.
 
-## Features
+## Using the AI Assistant
 
-✅ **Persistent Data Storage**: Tasks are saved to `~/Library/Application Support/BacklogTracker/tasks.json`
+The app includes a powerful AI assistant powered by [Ollama](https://ollama.ai), running locally on your machine.
+
+### Setup Ollama (One-time)
+
+1. **Install Ollama** (if not already installed):
+   ```bash
+   # Visit https://ollama.ai or use Homebrew
+   brew install ollama
+   ```
+
+2. **Start Ollama service**:
+   ```bash
+   ollama serve
+   ```
+
+3. **Install an AI model** (recommended):
+   ```bash
+   ollama pull llama3.2:latest
+   # Or try other models: qwen2.5:3b, mistral, etc.
+   ```
+
+### Configure in the App
+
+1. Open the app and click the **🤖 AI** tab
+2. Click **⚙️ Configure Ollama**
+3. Click **Test Connection** (default: localhost:11434)
+4. Select your preferred model from the dropdown
+5. Click **Save Configuration**
+
+### Using AI Features
+
+1. **Save Prompt Templates**: 
+   - Example: "Reformat the given text with proper English"
+   - Example: "Summarize this text in 3 bullet points"
+   - Example: "Fix grammar and spelling errors"
+
+2. **Process Text**:
+   - Select a saved prompt
+   - Enter your text in the input area
+   - Click **Generate Response**
+   - Copy the AI-generated result
+
+3. **Customize**:
+   - Use custom Ollama host/port for remote setups
+   - Switch between different AI models
+   - Create multiple prompt templates for different tasks
+
+## Features (Detailed)
+
+### 📝 Task Management
+- Create and organize backlog items
+- Automatic date grouping (Today, Yesterday, specific dates)
+- Mark tasks as complete/incomplete
+- Delete tasks with confirmation
+- Real-time statistics (pending/completed counts)
+
+### ✍️ Scribble Pad
+- Quick note-taking area
+- Auto-save as you type
+- Perfect for temporary thoughts and ideas
+
+### 🤖 AI Assistant (Powered by Ollama)
+- **Local AI Processing**: All AI operations run on your machine
+- **Custom Prompts**: Save and reuse prompt templates
+- **Flexible Configuration**: Support for custom Ollama host/port
+- **Model Selection**: Choose from all your installed Ollama models
+- **One-Click Copy**: Copy AI responses to clipboard instantly
+
+✅ **Persistent Data Storage**: Everything saved to `~/Library/Application Support/BacklogTracker/`
 
 ✅ **Native macOS Feel**: Uses system fonts, native window styling, and macOS design patterns
 
@@ -91,8 +181,11 @@ npm run build-mac
 
 ## Data Location
 
-Your tasks are automatically saved to:
-`~/Library/Application Support/BacklogTracker/tasks.json`
+Your data is automatically saved to:
+- **Tasks**: `~/Library/Application Support/BacklogTracker/tasks.json`
+- **Scribble**: `~/Library/Application Support/BacklogTracker/scribble.txt`
+- **AI Prompts**: `~/Library/Application Support/BacklogTracker/prompts.json`
+- **Ollama Config**: `~/Library/Application Support/BacklogTracker/ollama-config.json`
 
 This ensures data persists across app updates and system restarts.
 
